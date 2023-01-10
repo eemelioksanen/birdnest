@@ -4,6 +4,9 @@ import { getOffenders } from './reducers/offenderReducer'
 import { getDrones } from './reducers/droneReducer'
 import OffenderTable from './components/OffenderTable'
 import DroneVisual from './components/DroneVisual'
+import Navigation from './components/Navigation'
+import About from './components/About'
+import './App.css'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -20,8 +23,10 @@ const App = () => {
   setInterval(() => updateData(), 2000)
 
   return (
-    <div>
+    <div className='App'>
+      <Navigation />
       <DroneVisual />
+      <About />
       <OffenderTable />
     </div>
   )

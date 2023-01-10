@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux'
 const OffenderTable = () => {
   const style = {
     marginTop: '5px',
+    backgroundColor: '282c34',
+    minHeight: '100vh',
   }
 
   const offenders = useSelector((state) => state.offenders)
@@ -16,16 +18,16 @@ const OffenderTable = () => {
   }
 
   return (
-    <div>
-      <Table striped style={style}>
+    <div style={style}>
+      <Table striped variant='dark'>
         <tbody>
           <tr>
-            <th>pilot id</th>
-            <th>name</th>
+            <th>drone ID</th>
+            <th>pilot</th>
             <th>phone number</th>
-            <th>creation date</th>
+            <th>registeration date</th>
             <th>email</th>
-            <th>smallest distance (reported)</th>
+            <th>closest distance (reported)</th>
             <th>timestamp</th>
             <th>last seen</th>
           </tr>
