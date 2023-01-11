@@ -1,17 +1,16 @@
-import axios from 'axios'
-const baseUrl = '/api/'
+const droneUrl = '/api/drones'
+const offenderUrl = '/api/offenders'
 
-const getOffenders = async () => {
-  const response = await axios.get(baseUrl + 'offenders')
-  if (response.status === 200) return response.data
-  else return null
+const getData = async (url) => {
+  return fetch(url).then((response) => {
+    if (response.status !== 200) return null
+    return response.json()
+  })
 }
 
-const getDrones = async () => {
-  const response = await axios.get(baseUrl + 'drones')
-  if (response.status === 200) return response.data
-  else return null
-}
+const getOffenders = () => getData(offenderUrl)
+
+const getDrones = () => getData(droneUrl)
 
 const droneService = { getOffenders, getDrones }
 
