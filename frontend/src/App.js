@@ -6,7 +6,7 @@ import OffenderTable from './components/OffenderTable'
 import DroneVisual from './components/DroneVisual'
 import Navigation from './components/Navigation'
 import About from './components/About'
-import './App.css'
+import './styles/App.css'
 
 const App = () => {
   const dispatch = useDispatch()
