@@ -12,7 +12,7 @@ const getData = async () => {
       return parsed
     } else return null
   } catch (exception) {
-    console.log(exception)
+    console.log(exception.message)
   }
 }
 
@@ -22,7 +22,7 @@ const getPilotData = async (id) => {
     if (response.status === 200) return response.data
     else return null
   } catch (exception) {
-    console.log(exception)
+    console.log(exception.message)
   }
 }
 

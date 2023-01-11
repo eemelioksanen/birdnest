@@ -83,7 +83,7 @@ const updateOffenders = (capture) => {
         updateOffenderData(pilotWithTimestamp)
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error.message)
       })
   })
 }
@@ -98,7 +98,7 @@ const updateData = () => {
       app.locals.drones = capture.drone
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error.message)
     })
 }
 
