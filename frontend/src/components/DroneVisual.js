@@ -21,7 +21,7 @@ const Drone = ({ data }) => {
 
   // prevent text from going over the border in vertical direction
   if (dataPosY < 50) {
-    textPosY = 510 - dataPosY
+    textPosY = 490 - dataPosY
   } else {
     textPosY = originY - dataPosY + 270
   }
