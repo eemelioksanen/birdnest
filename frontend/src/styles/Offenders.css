@@ -33,3 +33,12 @@ th {
 tr:nth-child(even) {
   background-color: #282c34;
 }
+
+td:first-child {
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+td:last-child {
+  border-bottom-right-radius: 1em;
+  border-top-right-radius: 1em;
+}
