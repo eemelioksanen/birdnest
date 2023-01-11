@@ -1,6 +1,4 @@
 import { useSelector } from 'react-redux'
-import { useEffect, useMemo, useState } from 'react'
-import { useTable, useSortBy } from 'react-table'
 import '../styles/Offenders.css'
 
 const OffenderTable = () => {
@@ -13,90 +11,37 @@ const OffenderTable = () => {
     return `${minutes} min ${seconds} sec ago`
   }
 
-  const COLUMNS = [
-    {
-      Header: 'pilot ID',
-      accessor: 'drone_id',
-    },
-    {
-      Header: 'pilot',
-      accessor: 'pilot',
-    },
-    {
-      Header: 'phone number',
-      accessor: 'phone',
-    },
-    {
-      Header: 'registeration date',
-      accessor: 'registeration',
-    },
-    {
-      Header: 'email',
-      accessor: 'email',
-    },
-    {
-      Header: 'closest distance (reported)',
-      accessor: 'distance',
-    },
-    {
-      Header: 'timestamp',
-      accessor: 'timestamp',
-    },
-    {
-      Header: 'last seen',
-      accessor: 'lastseen',
-    },
-  ]
-
-  const [data, setData] = useState([])
-  const columns = useMemo(() => COLUMNS, [])
-
-  useEffect(() => {
-    const offenderData = offenders.map((offender) => {
-      return {
-        drone_id: offender.pilot.pilotId,
-        pilot: `${offender.pilot.firstName} ${offender.pilot.lastName}`,
-        phone: offender.pilot.phoneNumber,
-        registeration: offender.pilot.createdDt,
-        email: offender.pilot.email,
-        distance: `${Math.floor(offender.distance / 1000)} m (${
-          offender.distance
-        })`,
-        timestamp: offender.timestamp,
-        lastseen: parseTime(offender),
-      }
-    })
-    setData(offenderData)
-  }, [offenders])
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data }, useSortBy)
-
   return (
     <div className='Offenders'>
       <div className='Inner'>
-        <table {...getTableProps()}>
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render('Header')}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row)
+        <table>
+          <tbody>
+            <tr>
+              <th>drone ID</th>
+              <th>pilot</th>
+              <th>phone number</th>
+              <th>registeration date</th>
+              <th>email</th>
+              <th>closest distance (reported)</th>
+              <th>timestamp</th>
+              <th>last seen</th>
+            </tr>
+            {offenders.map((offender) => {
               return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                    )
-                  })}
+                <tr key={offender.pilot.pilotId}>
+                  <td>{offender.pilot.pilotId}</td>
+                  <td>
+                    {offender.pilot.firstName} {offender.pilot.lastName}
+                  </td>
+                  <td>{offender.pilot.phoneNumber}</td>
+                  <td>{offender.pilot.createdDt}</td>
+                  <td>{offender.pilot.email}</td>
+                  <td>
+                    {Math.floor(offender.distance / 1000)} m (
+                    {offender.distance})
+                  </td>
+                  <td>{offender.timestamp}</td>
+                  <td>{parseTime(offender)}</td>
                 </tr>
               )
             })}
