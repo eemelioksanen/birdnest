@@ -1,16 +1,9 @@
-// import { Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useEffect, useMemo, useState } from 'react'
 import { useTable, useSortBy } from 'react-table'
 import '../styles/Offenders.css'
 
 const OffenderTable = () => {
-  const style = {
-    marginTop: '5px',
-    backgroundColor: '282c34',
-    minHeight: '100vh',
-  }
-
   const offenders = useSelector((state) => state.offenders)
 
   const parseTime = (offender) => {
