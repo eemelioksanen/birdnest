@@ -1,0 +1,38 @@
+.About {
+  font-size: 20px;
+  color: white;
+  width: 40%;
+  display: inline-block;
+  font-family: optima, sans-serif;
+  margin-top: 60px;
+
+  animation: Fade 1s linear;
+}
+
+h1 {
+  text-align: left;
+  font-size: 50px;
+  background-color: white;
+  font-family: optima, sans-serif;
+  background-image: linear-gradient(
+    45deg,
+    white 10%,
+    lightblue 20%,
+    #ebadff 40.666%
+  );
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+}
+
+@keyframes Fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
