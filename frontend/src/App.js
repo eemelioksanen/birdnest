@@ -20,7 +20,7 @@ const App = () => {
     updateData()
   }, [])
 
-  setInterval(() => updateData(), 2000)
+  setInterval(() => updateData(), 1500)
 
   return (
     <div className='App'>

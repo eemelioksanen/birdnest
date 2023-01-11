@@ -102,7 +102,7 @@ const updateData = () => {
     })
 }
 
-// update the state every 2 seconds
-setInterval(() => updateData(), 3000)
+// update the state every 1.5 seconds
+setInterval(() => updateData(), 1500)
 
 module.exports = app
