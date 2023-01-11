@@ -5,9 +5,7 @@ const droneService = require('./services/droneService')
 const droneRouter = require('./controllers/drones')
 const app = express()
 
-// configure app
 app.use(cors())
-// app.use(express.json())
 app.use('/api', droneRouter)
 app.locals.capture = []
 app.locals.offenders = []
@@ -92,6 +90,7 @@ const updateData = () => {
   droneService
     .getData()
     .then((data) => {
+      if (!data) return
       const capture = data.report.capture
       updateOffenders(capture)
       app.locals.capture = capture
