@@ -1,0 +1,35 @@
+.Offenders {
+  padding-left: 2%;
+  padding-right: 2%;
+  background: linear-gradient(to right, lightblue, lightgreen);
+
+  padding: 2px;
+  border-radius: 1em;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  animation: Fade 1s linear;
+}
+
+.Inner {
+  background: #222;
+  border-radius: 1em;
+}
+
+table {
+  margin: 0;
+  place-items: center;
+  background: #222;
+  border-radius: 1em;
+  font-family: arial, sans-serif;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  margin: auto;
+}
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #282c34;
+}
