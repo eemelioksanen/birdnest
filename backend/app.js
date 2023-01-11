@@ -44,7 +44,7 @@ const updateOffenderData = (offender) => {
   )
 
   if (idx !== -1) {
-    // offender is already in the arrat
+    // offender is already in the array
     const oldDistance = app.locals.offenders[idx].distance
     offender.distance = Math.max(oldDistance, offender.distance)
     app.locals.offenders[idx] = offender
