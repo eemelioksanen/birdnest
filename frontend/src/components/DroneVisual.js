@@ -1,43 +1,54 @@
 import { useSelector } from 'react-redux'
 import { Stage, Layer, Circle, Text, Rect, Group } from 'react-konva'
 
+// position of the 'origin' of the circle in pixels
+// the whole visualizer moves according to the origin
 const originX = 285
 const originY = 285
 
-const Drone = ({ data }) => {
-  const dataPosX = Number(data.positionX._text) / 1000
-  const dataPosY = Number(data.positionY._text) / 1000
+const areaSize = 500 // size of one side of the visualizer area square
+
+const Drone = ({ drone }) => {
+  const dronePosX = Number(drone.positionX._text) / 1000
+  const dronePosY = Number(drone.positionY._text) / 1000
+
+  // x and y position of the bottom left corner of the draw area
+  const xOffset = originX - areaSize / 2
+  const yOffset = originY + areaSize / 2
+
   let textPosX
   let textPosY
 
+  const horizontalTextLimit = 60
   // prevent text from going over the border in horizontal direction
-  if (dataPosX < 50) {
-    textPosX = 50
-  } else if (dataPosX > 440) {
-    textPosX = 440
+  if (dronePosX < horizontalTextLimit) {
+    textPosX = xOffset
+  } else if (dronePosX > areaSize - horizontalTextLimit) {
+    textPosX = areaSize - horizontalTextLimit + xOffset - 35
   } else {
-    textPosX = originX + dataPosX - 250 - 45
+    textPosX = dronePosX + xOffset - 45
   }
 
+  const verticalTextLimit = 50
   // prevent text from going over the border in vertical direction
-  if (dataPosY < 50) {
-    textPosY = 490 - dataPosY
+  if (dronePosY < verticalTextLimit) {
+    textPosY = areaSize - dronePosY
   } else {
-    textPosY = originY - dataPosY + 270
+    textPosY = originY - dronePosY + 270
   }
 
   return (
     <Group>
       <Circle
-        x={originX + dataPosX - 250}
-        y={originY - dataPosY + 250}
+        x={dronePosX + xOffset}
+        y={-dronePosY + yOffset}
         radius={5}
         fill='grey'
         stroke='white'
       />
       <Text
-        text={`${data.serialNumber._text}
-        ${Math.floor(dataPosX)}, ${Math.floor(dataPosY)}`}
+        text={`${drone.serialNumber._text}
+        ${Math.floor(dronePosX)}, ${Math.floor(dronePosY)}`}
         x={textPosX}
         y={textPosY}
         fill='white'
@@ -47,21 +58,20 @@ const Drone = ({ data }) => {
 }
 
 const Background = () => {
-  const size = 500
   const backRectMultiplier = 1.1
   return (
     <Group>
       <Rect
-        x={originX - (size * backRectMultiplier) / 2}
+        x={originX - (areaSize * backRectMultiplier) / 2}
         y={originY - 275}
-        width={size * backRectMultiplier}
-        height={size * backRectMultiplier}
+        width={areaSize * backRectMultiplier}
+        height={areaSize * backRectMultiplier}
         stroke='dark'
         shadowBlur={20}
         fillLinearGradientStartPoint={{ x: 0, y: 0 }}
         fillLinearGradientEndPoint={{
-          x: size * backRectMultiplier,
-          y: size * backRectMultiplier,
+          x: areaSize * backRectMultiplier,
+          y: areaSize * backRectMultiplier,
         }}
         fillLinearGradientColorStops={[0, 'lightblue', 1, 'lightgreen']}
         cornerRadius={10}
@@ -71,10 +81,10 @@ const Background = () => {
       <Text text='500, 0' x={originX + 220} y={originY + 255} fill='black' />
       <Text text='500, 500' x={originX + 220} y={originY - 265} fill='black' />
       <Rect
-        x={originX - size / 2}
-        y={originY - 250}
-        width={size}
-        height={size}
+        x={originX - areaSize / 2}
+        y={originY - areaSize / 2}
+        width={areaSize}
+        height={areaSize}
         fill='#1d1e30'
         stroke='black'
         shadowBlur={20}
@@ -89,7 +99,7 @@ const NoFlyArea = () => {
   return <Circle x={originX} y={originY} radius={radius} stroke='lightblue' />
 }
 
-const Duck = () => {
+const Bird = () => {
   return <Circle x={originX} y={originY} radius={5} fill='red' stroke='white' />
 }
 
@@ -109,10 +119,10 @@ const DroneVisual = () => {
       <Stage width={700} height={570}>
         <Layer>
           <Background />
-          <Duck />
+          <Bird />
           <NoFlyArea />
           {drones.map((drone) => {
-            return <Drone key={drone.serialNumber._text} data={drone} />
+            return <Drone key={drone.serialNumber._text} drone={drone} />
           })}
         </Layer>
       </Stage>

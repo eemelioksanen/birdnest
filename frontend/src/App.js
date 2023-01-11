@@ -18,6 +18,7 @@ const App = () => {
 
   useEffect(() => {
     updateData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   setInterval(() => updateData(), 1500)

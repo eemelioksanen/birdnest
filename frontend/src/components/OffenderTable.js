@@ -5,7 +5,7 @@ const OffenderTable = () => {
   const offenders = useSelector((state) => state.offenders)
 
   const parseTime = (offender) => {
-    const delta = Date.now() - offender.localTime
+    const delta = Date.now() - offender.lastSeen
     const minutes = Math.floor(delta / 60000)
     const seconds = Math.floor(((delta / 60000) % 1).toFixed(2) * 60)
     return `${minutes} min ${seconds} sec ago`

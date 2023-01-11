@@ -8,13 +8,9 @@ const Navigation = () => {
     textAlign: 'left',
   }
 
-  const navStyle = {
-    paddingLeft: 10,
-  }
-
   return (
     <Navbar bg='dark' expand='lg' variant='dark'>
-      <Nav style={navStyle}>
+      <Nav style={{ paddingLeft: 10 }}>
         <Navbar.Collapse id='nav'>
           <Nav.Link
             style={linkStyle}

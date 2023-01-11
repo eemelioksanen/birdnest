@@ -3,7 +3,7 @@ const parser = require('xml-js')
 const droneUrl = 'http://assignments.reaktor.com/birdnest/drones'
 const pilotUrl = 'http://assignments.reaktor.com/birdnest/pilots/'
 
-const getData = async () => {
+const getAllData = async () => {
   return fetch(droneUrl)
     .then((response) => {
       if (response.status !== 200) return null
@@ -24,4 +24,4 @@ const getPilotData = async (id) => {
     .catch((error) => console.log(error.message))
 }
 
-module.exports = { getData, getPilotData }
+module.exports = { getAllData, getPilotData }
