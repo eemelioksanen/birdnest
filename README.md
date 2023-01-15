@@ -2,7 +2,7 @@ This is a web application made for the reaktor 2023 summer developer trainee pre
 
 ## How to run the application
 ### 1. Install dependencies
-You can either run `npm install` in both client and server folders, or just use the script `npm run install-all` in the root folder
+You can either run `npm install` in both client and server folders, or just use the script `npm install` in the root folder
 
 ### 2. Build the client
 You can run `npm run build` in either the `root` or the `client` folder.
