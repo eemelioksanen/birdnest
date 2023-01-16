@@ -20,11 +20,11 @@ WORKDIR /home/appuser/app/server
 RUN npm install
 
 # expose the port 3000
-EXPOSE 3000
+EXPOSE 8080
 
 # set the environmental variables
 ENV NODE_ENV=production \
-  PORT=3000
+  PORT=8080
 
 # run the application
 CMD ["node", "index.js"]
