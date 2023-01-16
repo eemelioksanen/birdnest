@@ -2,10 +2,13 @@ import { useSelector } from 'react-redux'
 import { Stage, Layer, Circle, Text, Rect, Group } from 'react-konva'
 import '../styles/DroneVisual.css'
 
+// add padding to the left and top sides of the drawing area
+const padding = 15
+
 // position of the 'origin' of the circle in pixels
 // the whole visualizer moves according to the origin
-const originX = 275
-const originY = 275
+const originX = 275 + padding
+const originY = 275 + padding
 
 const areaSize = 500 // size of one side of the visualizer area square
 
@@ -108,7 +111,7 @@ const DroneVisual = () => {
   const drones = useSelector((state) => state.drones)
   return (
     <div className='DroneVisual'>
-      <Stage width={700} height={570}>
+      <Stage width={areaSize * 1.2} height={areaSize * 1.2}>
         <Layer>
           <Background />
           <Bird />
