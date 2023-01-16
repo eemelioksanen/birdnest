@@ -22,5 +22,9 @@ RUN npm install
 # expose the port 3000
 EXPOSE 3000
 
+# set the environmental variables
+ENV NODE_ENV=production \
+  PORT=3000
+
 # run the application
-CMD [ "npm", "start" ]
+CMD ["node", "index.js"]
