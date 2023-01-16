@@ -18,6 +18,7 @@ const OffenderTable = () => {
           <tbody>
             <tr>
               <th>drone ID</th>
+              <th>pilot ID</th>
               <th>pilot</th>
               <th>phone number</th>
               <th>registeration date</th>
@@ -29,6 +30,7 @@ const OffenderTable = () => {
             {offenders.map((offender) => {
               return (
                 <tr key={offender.pilot.pilotId}>
+                  <td>{offender.droneSerialNumber}</td>
                   <td>{offender.pilot.pilotId}</td>
                   <td>
                     {offender.pilot.firstName} {offender.pilot.lastName}
