@@ -1,12 +1,9 @@
 .Offenders {
-  padding-left: 2%;
-  padding-right: 2%;
   background: linear-gradient(to right, lightblue, lightgreen);
 
   padding: 2px;
   border-radius: 1em;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
+  margin: 0.5%;
   animation: Fade 1s linear;
 }
 

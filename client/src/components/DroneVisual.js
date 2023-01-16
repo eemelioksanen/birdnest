@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux'
 import { Stage, Layer, Circle, Text, Rect, Group } from 'react-konva'
+import '../styles/DroneVisual.css'
 
 // position of the 'origin' of the circle in pixels
 // the whole visualizer moves according to the origin
-const originX = 285
-const originY = 285
+const originX = 275
+const originY = 275
 
 const areaSize = 500 // size of one side of the visualizer area square
 
@@ -32,7 +33,7 @@ const Drone = ({ drone }) => {
   const verticalTextLimit = 50
   // prevent text from going over the border in vertical direction
   if (dronePosY < verticalTextLimit) {
-    textPosY = areaSize - dronePosY
+    textPosY = areaSize - dronePosY + originY - 275
   } else {
     textPosY = originY - dronePosY + 270
   }
@@ -103,19 +104,10 @@ const Bird = () => {
   return <Circle x={originX} y={originY} radius={5} fill='red' stroke='white' />
 }
 
-const droneVisualStyle = {
-  display: 'inline-block',
-  color: 'white',
-  width: '750px',
-  height: '580px',
-  float: 'left',
-  animation: 'Fade 1s linear',
-}
-
 const DroneVisual = () => {
   const drones = useSelector((state) => state.drones)
   return (
-    <div style={droneVisualStyle}>
+    <div className='DroneVisual'>
       <Stage width={700} height={570}>
         <Layer>
           <Background />

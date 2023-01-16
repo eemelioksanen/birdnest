@@ -21,6 +21,7 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // poll the data every 1,5 seconds
   setInterval(() => updateData(), 1500)
 
   return (
