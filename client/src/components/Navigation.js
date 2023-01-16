@@ -11,6 +11,7 @@ const Navigation = () => {
   return (
     <Navbar bg='dark' expand='lg' variant='dark'>
       <Nav style={{ paddingLeft: 10 }}>
+        <Navbar.Toggle aria-controls='nav' />
         <Navbar.Collapse id='nav'>
           <Nav.Link
             style={linkStyle}
