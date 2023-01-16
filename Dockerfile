@@ -19,7 +19,7 @@ RUN npm install && npm run build
 WORKDIR /home/appuser/app/server
 RUN npm install
 
-# expose the port 3000
+# expose the port
 EXPOSE 8080
 
 # set the environmental variables
