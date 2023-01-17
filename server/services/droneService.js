@@ -1,7 +1,14 @@
 const parser = require('xml-js')
 
-const droneUrl = 'http://assignments.reaktor.com/birdnest/drones'
-const pilotUrl = 'http://assignments.reaktor.com/birdnest/pilots/'
+const testing = process.env.NODE_ENV === 'test' ? true : false
+
+const droneUrl = testing
+  ? 'http://localhost:' + process.env.TEST_SERVER_PORT + '/drones'
+  : 'http://assignments.reaktor.com/birdnest/drones'
+
+const pilotUrl = testing
+  ? 'http://localhost:' + process.env.TEST_SERVER_PORT + '/pilots/'
+  : 'http://assignments.reaktor.com/birdnest/pilots/'
 
 const getAllData = async () => {
   return fetch(droneUrl)

@@ -19,6 +19,7 @@ const birdX = 250000.0
 const birdY = 250000.0
 const allowedDistance = 100000.0
 
+// calculate drone distance to the bird
 const distanceToBird = (drone) => {
   const droneX = Number(drone.positionX._text)
   const droneY = Number(drone.positionY._text)
@@ -28,6 +29,7 @@ const distanceToBird = (drone) => {
   return distance
 }
 
+// connect the drone to a pilot and return the pilot data
 const mapDroneToPilot = async (drone) => {
   const id = drone.serialNumber._text
   const pilot = await droneService.getPilotData(id)
@@ -39,8 +41,8 @@ const mapDroneToPilot = async (drone) => {
   }
 }
 
-// update offender data in the app.locals.offenders array or
-const updateOffenderData = (offender) => {
+// update offender data in the app.locals.offenders array
+const updateLocalOffenderData = (offender) => {
   const idx = app.locals.offenders.findIndex(
     (item) => item.pilot.pilotId === offender.pilot.pilotId
   )
@@ -92,7 +94,7 @@ const findAndUpdateOffenders = (capture) => {
           timestamp,
           lastSeen: Date.now(),
         }
-        updateOffenderData(pilotWithTimestamp)
+        updateLocalOffenderData(pilotWithTimestamp)
       })
       .catch((error) => {
         console.log(error.message)
@@ -116,7 +118,11 @@ const updateData = () => {
     })
 }
 
-// update the state every 1.5 seconds
-setInterval(() => updateData(), 1500)
+// update the state every 1.5 seconds or only once if testing
+if (process.env.NODE_ENV === 'test') {
+  updateData()
+} else {
+  setInterval(() => updateData(), 1500)
+}
 
 module.exports = app
