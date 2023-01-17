@@ -1,6 +1,6 @@
 const express = require('express')
 const droneService = require('./services/droneService')
-const droneRouter = require('./controllers/drones')
+const router = require('./controllers/router')
 
 const app = express()
 
@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'production') {
   const BUILD_DIR = '../client/build'
   app.use(express.static(BUILD_DIR))
 }
-app.use('/api', droneRouter)
+app.use('/api', router)
 app.locals.capture = [] // a variable storing the capture data as a whole
 app.locals.offenders = [] // a variable storing data about the offender pilots
 app.locals.drones = [] // a variable storing data about all drones

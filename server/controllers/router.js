@@ -1,6 +1,6 @@
-const droneRouter = require('express').Router()
+const router = require('express').Router()
 
-droneRouter.get('/drones', async (req, res, next) => {
+router.get('/drones', async (req, res, next) => {
   try {
     const data = req.app.locals.drones
     res.status(200).send(data)
@@ -10,7 +10,7 @@ droneRouter.get('/drones', async (req, res, next) => {
   }
 })
 
-droneRouter.get('/offenders', async (req, res, next) => {
+router.get('/offenders', async (req, res, next) => {
   try {
     const data = req.app.locals.offenders
     res.status(200).send(data)
@@ -20,4 +20,4 @@ droneRouter.get('/offenders', async (req, res, next) => {
   }
 })
 
-module.exports = droneRouter
+module.exports = router
