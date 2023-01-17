@@ -4,3 +4,5 @@
 .git
 README.md
 npm-debug.log
+**/tests
+fly.toml
