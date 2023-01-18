@@ -21,10 +21,8 @@ const OffenderTable = () => {
               <th>pilot ID</th>
               <th>pilot</th>
               <th>phone number</th>
-              <th>registeration date</th>
               <th>email</th>
               <th>closest distance (reported)</th>
-              <th>timestamp</th>
               <th>last seen</th>
             </tr>
             {offenders.map((offender) => {
@@ -36,13 +34,11 @@ const OffenderTable = () => {
                     {offender.pilot.firstName} {offender.pilot.lastName}
                   </td>
                   <td>{offender.pilot.phoneNumber}</td>
-                  <td>{offender.pilot.createdDt}</td>
                   <td>{offender.pilot.email}</td>
                   <td>
                     {Math.floor(offender.distance / 1000)} m (
                     {offender.distance})
                   </td>
-                  <td>{offender.timestamp}</td>
                   <td>{parseTime(offender)}</td>
                 </tr>
               )
