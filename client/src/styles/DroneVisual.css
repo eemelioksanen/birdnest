@@ -1,12 +1,15 @@
 .DroneVisual {
   color: white;
-  width: 580px;
-  height: 580px;
   float: left;
   animation: Fade 1s linear;
 }
 
-@media only screen and (max-width: 700px) {
+.canvas {
+  width: 580px;
+  height: 580px;
+}
+
+@media only screen and (max-width: 86em) {
   .DroneVisual {
     color: white;
     width: 100%;
@@ -14,5 +17,13 @@
     float: left;
     animation: Fade 1s linear;
     text-align: center;
+    justify-content: center;
+  }
+
+  .canvas {
+    width: 580px;
+    height: 580px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

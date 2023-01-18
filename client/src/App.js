@@ -27,9 +27,11 @@ const App = () => {
   return (
     <div className='App'>
       <Navigation />
-      <DroneVisual />
-      <About />
-      <OffenderTable />
+      <div className='content'>
+        <DroneVisual />
+        <About />
+        <OffenderTable />
+      </div>
     </div>
   )
 }

@@ -111,16 +111,18 @@ const DroneVisual = () => {
   const drones = useSelector((state) => state.drones)
   return (
     <div className='DroneVisual'>
-      <Stage width={areaSize * 1.2} height={areaSize * 1.2}>
-        <Layer>
-          <Background />
-          <Bird />
-          <NoFlyArea />
-          {drones.map((drone) => {
-            return <Drone key={drone.serialNumber._text} drone={drone} />
-          })}
-        </Layer>
-      </Stage>
+      <div className='canvas'>
+        <Stage width={areaSize * 1.2} height={areaSize * 1.2}>
+          <Layer>
+            <Background />
+            <Bird />
+            <NoFlyArea />
+            {drones.map((drone) => {
+              return <Drone key={drone.serialNumber._text} drone={drone} />
+            })}
+          </Layer>
+        </Stage>
+      </div>
     </div>
   )
 }

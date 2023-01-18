@@ -1,13 +1,18 @@
 .About {
   font-size: 20px;
   color: white;
-  width: 45%;
-  height: 570px;
+  width: 55%;
+  height: 28.5em;
   display: inline-block;
   font-family: arial, sans-serif;
   animation: Fade 0.5s linear;
-  padding-top: 2em;
-  padding-left: 10%;
+  padding-top: 5em;
+  justify-content: center;
+  min-width: 39em;
+}
+.inner {
+  margin-left: auto;
+  width: 40em;
 }
 
 h1 {
@@ -36,15 +41,23 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 1336px) {
+@media only screen and (max-width: 86em) {
   .About {
+    display: table-cell;
     font-size: 20px;
     color: white;
     width: 100%;
     padding: 5%;
-    height: auto;
-    display: inline-block;
     font-family: arial, sans-serif;
     animation: Fade 0.5s linear;
+    height: auto;
+    min-width: 100%;
+  }
+  .inner {
+    word-wrap: break-word;
+    position: relative;
+    margin-left: auto;
+    width: 100%;
+    height: auto;
   }
 }

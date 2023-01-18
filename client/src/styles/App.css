@@ -3,3 +3,9 @@
   background-size: 'cover';
   min-height: 100vh;
 }
+
+.content {
+  max-width: 110em;
+  margin-left: auto;
+  margin-right: auto;
+}
