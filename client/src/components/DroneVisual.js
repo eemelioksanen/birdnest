@@ -59,7 +59,7 @@ const Drone = ({ drone }) => {
       />
       <Text
         text={`${drone.serialNumber._text}
-        ${Math.floor(dronePosX)}, ${Math.floor(dronePosY)}`}
+        ${Math.floor(dronePosX / sizeMP)}, ${Math.floor(dronePosY / sizeMP)}`}
         x={textPosX}
         y={textPosY}
         fill='white'
