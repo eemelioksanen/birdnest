@@ -50,9 +50,14 @@ td:last-child {
   tr {
     border-radius: 1em;
     display: block;
+    word-wrap: break-word;
   }
   th {
     display: none;
+  }
+
+  .Offenders {
+    margin: 2px;
   }
 
   td {
@@ -60,6 +65,7 @@ td:last-child {
     border: none;
     position: relative;
     padding-left: 50%;
+    word-wrap: break-word;
   }
 
   td:before {
@@ -96,13 +102,10 @@ td:last-child {
     content: 'phone number';
   }
   td:nth-of-type(5):before {
-    content: 'registeration date';
-  }
-  td:nth-of-type(6):before {
     content: 'email';
   }
-  td:nth-of-type(7):before {
-    content: 'closests distance (reported)';
+  td:nth-of-type(6):before {
+    content: 'min distance (report)';
   }
   td:nth-of-type(8):before {
     content: 'timestamp';

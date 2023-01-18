@@ -2,23 +2,30 @@ import { useSelector } from 'react-redux'
 import { Stage, Layer, Circle, Text, Rect, Group } from 'react-konva'
 import '../styles/DroneVisual.css'
 
+const areaSize = Math.min(500, window.innerWidth / 1.2) // size of one side of the visualizer area square
+
 // add padding to the left and top sides of the drawing area
-const padding = 15
+let padding
+if (window.innerWidth < 500) {
+  padding = 20
+} else {
+  padding = 40
+}
 
 // position of the 'origin' of the circle in pixels
 // the whole visualizer moves according to the origin
-const originX = 275 + padding
-const originY = 275 + padding
-
-const areaSize = 500 // size of one side of the visualizer area square
+const originX = areaSize / 2 + padding
+const originY = areaSize / 2 + padding
 
 const Drone = ({ drone }) => {
-  const dronePosX = Number(drone.positionX._text) / 1000
-  const dronePosY = Number(drone.positionY._text) / 1000
+  const sizeMP = areaSize / 500
 
   // x and y position of the bottom left corner of the draw area
   const xOffset = originX - areaSize / 2
   const yOffset = originY + areaSize / 2
+
+  const dronePosX = (sizeMP * Number(drone.positionX._text)) / 1000
+  const dronePosY = (sizeMP * Number(drone.positionY._text)) / 1000
 
   let textPosX
   let textPosY
@@ -33,12 +40,12 @@ const Drone = ({ drone }) => {
     textPosX = dronePosX + xOffset - 45
   }
 
-  const verticalTextLimit = 50
+  const verticalTextLimit = 40
   // prevent text from going over the border in vertical direction
   if (dronePosY < verticalTextLimit) {
-    textPosY = areaSize - dronePosY + originY - 275
+    textPosY = yOffset - 50
   } else {
-    textPosY = originY - dronePosY + 270
+    textPosY = -dronePosY + yOffset + 10
   }
 
   return (
@@ -67,7 +74,7 @@ const Background = () => {
     <Group>
       <Rect
         x={originX - (areaSize * backRectMultiplier) / 2}
-        y={originY - 275}
+        y={originY - (areaSize * backRectMultiplier) / 2}
         width={areaSize * backRectMultiplier}
         height={areaSize * backRectMultiplier}
         stroke='dark'
@@ -79,11 +86,32 @@ const Background = () => {
         }}
         fillLinearGradientColorStops={[0, 'lightblue', 1, 'lightgreen']}
         cornerRadius={10}
+        preventDefault={false}
       />
-      <Text text='0, 0' x={originX - 270} y={originY + 255} fill='black' />
-      <Text text='0, 500' x={originX - 270} y={originY - 265} fill='black' />
-      <Text text='500, 0' x={originX + 220} y={originY + 255} fill='black' />
-      <Text text='500, 500' x={originX + 220} y={originY - 265} fill='black' />
+      <Text
+        text='0, 0'
+        x={originX - areaSize / 2 - 10}
+        y={originY + areaSize / 2 + 5}
+        fill='black'
+      />
+      <Text
+        text='0, 500'
+        x={originX - areaSize / 2 - 15}
+        y={originY - areaSize / 2 - 15}
+        fill='black'
+      />
+      <Text
+        text='500, 0'
+        x={originX + areaSize / 2 - 25}
+        y={originY + areaSize / 2 + 5}
+        fill='black'
+      />
+      <Text
+        text='500, 500'
+        x={originX + areaSize / 2 - 25}
+        y={originY - areaSize / 2 - 15}
+        fill='black'
+      />
       <Rect
         x={originX - areaSize / 2}
         y={originY - areaSize / 2}
@@ -93,14 +121,23 @@ const Background = () => {
         stroke='black'
         shadowBlur={20}
         cornerRadius={10}
+        preventDefault={false}
       />
     </Group>
   )
 }
 
 const NoFlyArea = () => {
-  const radius = 100
-  return <Circle x={originX} y={originY} radius={radius} stroke='lightblue' />
+  const radius = (areaSize / 500) * 100
+  return (
+    <Circle
+      x={originX}
+      y={originY}
+      radius={radius}
+      stroke='lightblue'
+      preventDefault={false}
+    />
+  )
 }
 
 const Bird = () => {
