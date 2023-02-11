@@ -1,4 +1,4 @@
-This is a web application made for the Reaktor 2023 summer developer trainee pre-assignment: https://www.reaktor.com/careers/developer-trainee-summer-2023-6514340002/
+This is a web application made for the Reaktor 2023 summer developer trainee pre-assignment.
 
 The application is running on fly.io: https://wandering-fire-3559.fly.dev/
 
